@@ -1,0 +1,103 @@
+function load_car_models(company,models)
+    {
+        var company=document.getElementById(company_id);
+        var car_model= document.getElementById(car_model_id);
+
+
+        car_model.value="";
+        car_model.innerHTML="";
+        {% for brand in brands %}
+            if( brand.value == "{{ brand }}")
+            {
+                {% for models in  model%}
+                    {% if brand in models %}
+
+                        var newOption= document.createElement("option");
+                        newOption.value="{{ models }}";
+                        newOption.innerHTML="{{ models }}";
+                        car_model.options.add(newOption);
+                    {% endif %}
+                {% endfor %}
+            }
+        {% endfor %}
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    // model.value="";
+        // model.innerHTML="";
+        // {% for brand in brands %}
+        //     if( brand.value == "{{ brand }}")
+        //     {
+        //         {% for models in  model%}
+        //             {% if brand in models %}
+
+        //                 var newOption= document.createElement("option");
+        //                 newOption.value="{{ models }}";
+        //                 newOption.innerHTML="{{ models }}";
+        //                 model.options.add(newOption);
+        //             {% endif %}
+        //         {% endfor %}
+        //     }
+        // {% endfor %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        var brands=document.getElementById(company);
+        var model= document.getElementById(models);
+
+        console.log(brand.value)
+
+        model.value=""
+        model.innerHTML=""
+
+        {% for brands in brand %}
+            if(brands.value == "{{brands}}")
+            {
+                {% for model in model %}
+                    {% if brands in model}
+
+                    var newoption = document.createElement('option')
+                    newoption.value="{{model}}"
+                    newoption.innerHTML="{{model}}"
+                    
+                    model.options.add(newoption);
+                    {% endif %}
+                {% endfor %}
+            }
+        {% endfor %}

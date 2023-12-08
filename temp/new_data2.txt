@@ -1,0 +1,30 @@
+<script>
+    function load_car_models(companyId, modelId) {
+        var brandSelect = document.getElementById(companyId);
+        var modelSelect = document.getElementById(modelId);
+        var selectedBrand = brandSelect.value;
+
+        // Clear existing options
+        modelSelect.innerHTML = "";
+
+        // Create a list of all available models from your DataFrame
+        var allModels = [
+            {% for model in models %}
+            "{{ model }}",
+            {% endfor %}
+        ];
+
+        // Filter models that start with the selected brand
+        var filteredModels = allModels.filter(function(model) {
+            return model.startsWith(selectedBrand);
+        });
+
+        // Populate the model dropdown with filtered models
+        filteredModels.forEach(function (modelName) {
+            var option = document.createElement("option");
+            option.value = modelName;
+            option.text = modelName;
+            modelSelect.appendChild(option);
+        });
+    }
+</script>
